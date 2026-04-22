@@ -1,0 +1,6 @@
+@ApiGastosCrud_HostAddress = http://localhost:5031
+
+GET {{ApiGastosCrud_HostAddress}}/api/Gastos
+Accept: application/json
+
+###
