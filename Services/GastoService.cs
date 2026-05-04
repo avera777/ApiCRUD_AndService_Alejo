@@ -1,13 +1,17 @@
 using ApiGastos.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ApiGastos.Services
 {
-    public class GastoService
+    public class GastoService : IGastoService
     {
         private readonly List<Gasto> gastos = new()
         {
             new Gasto { Id = 1, Descripcion = "Transporte", Monto = 25000, Fecha = DateTime.Now },
-            new Gasto { Id = 2, Descripcion = "Almuerzo", Monto = 18000, Fecha = DateTime.Now }
+            new Gasto { Id = 2, Descripcion = "Almuerzo", Monto = 18000, Fecha = DateTime.Now },
+            new Gasto { Id = 3, Descripcion = "Internet", Monto = 70000, Fecha = DateTime.Now }
         };
 
         public List<Gasto> GetAll()
@@ -37,7 +41,9 @@ namespace ApiGastos.Services
         public bool Actualizar(int id, Gasto actualizado)
         {
             var gasto = gastos.FirstOrDefault(g => g.Id == id);
-            if (gasto == null) return false;
+
+            if (gasto == null)
+                return false;
 
             gasto.Descripcion = actualizado.Descripcion;
             gasto.Monto = actualizado.Monto;
@@ -49,7 +55,9 @@ namespace ApiGastos.Services
         public bool Eliminar(int id)
         {
             var gasto = gastos.FirstOrDefault(g => g.Id == id);
-            if (gasto == null) return false;
+
+            if (gasto == null)
+                return false;
 
             gastos.Remove(gasto);
             return true;

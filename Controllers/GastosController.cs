@@ -8,11 +8,11 @@ namespace ApiGastos.Controllers
     [Route("api/[controller]")]
     public class GastosController : ControllerBase
     {
-        private readonly GastoService _service;
+        private readonly IGastoService _service;
 
-        public GastosController(GastoService service)
+        public GastosController(IGastoService service)
         {
-            _service = service;
+        _service = service;
         }
 
         [HttpGet]
